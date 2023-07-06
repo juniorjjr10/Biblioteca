@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+<h1> Lista de livros</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <br>
+        <th>Editora</th>
+
+        <br>
+
+        <th>Ações</th>
+    </tr>
+    </thead>
+<tbody>
+</tbody>
+    <tr th:each="biblioteca : ${lista}">
+        <td th:text="${biblioteca.nome}"></td>
+        <td th:text="${biblioteca.editora}"></td>
+        <td>
+            <a th:href="@{/biblioteca/formulario?id=${id}(id=${biblioteca.id})}">Atualizar</a>
+
+            <form action="/biblioteca" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="id" th:value="${biblioteca.id}">
+                <input type="submit" value="Excluir">
+            </form>
+        </td>
+
+    </tr>
+
+
+</table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+
+
+
+    <title>Cadastro de livro</title>
+</head>
+
+<body>
+ <div layout:fragment="conteudo">
+
+<h1> cadestre seus livros</h1>
+
+     <form method="post" action="/biblioteca">
+
+     <input type="hidden" name="_method" value="put" th:if="${biblioteca != null}">
+     <input type="hidden" name="id" th:value="${biblioteca?.id}" >
+
+
+         <div>
+
+
+    <label for="nome">Nome:</label>
+    <input id="nome" name="name" th:value="${biblioteca?.nome}">
+
+ </div>
+     <br>
+
+    <div>
+
+    <label for="editora">Editora:</label>
+    <input id="editora" name="editora" th:value="${biblioteca?.editora}">
+
+    </div>
+
+    <input type="submit" value="Cadastrar" >
+
+ </form>
+ </div>
+</body>
+</html>
